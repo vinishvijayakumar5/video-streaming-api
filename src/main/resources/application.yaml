@@ -1,0 +1,36 @@
+server:
+  port: 8091
+
+application:
+  version: @project.version@
+
+spring:
+  application:
+    name: @project.artifactId@
+  liquibase:
+    enabled: true
+    change-log: classpath:/db/changelog/db.changelog-master.yaml
+    clearCheckSums: true
+  datasource:
+    url: jdbc:h2:mem:vs
+    username: root
+    password: password
+    driver-class-name: org.h2.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: none
+  h2:
+    console:
+      enabled: true
+
+springdoc:
+  api-docs:
+    path: /api-docs
+  swagger-ui:
+    path: /api-ui.html
+    operationsSorter: method
+
+logging:
+  level:
+    root: INFO
